@@ -18,9 +18,12 @@
   \setmainlanguage{thai}
   \setotherlanguage{english}
   \setmainfont{TH Sarabun New}[
-    BoldFont       = {TH Sarabun New Bold},
-    ItalicFont     = {TH Sarabun New Italic},
-    BoldItalicFont = {TH Sarabun New BoldItalic},
+    BoldFont       = {TH Sarabun New},
+    BoldFeatures   = {RawFeature={style=Bold}},
+    ItalicFont     = {TH Sarabun New},
+    ItalicFeatures = {RawFeature={style=Italic}},
+    BoldItalicFont = {TH Sarabun New},
+    BoldItalicFeatures = {RawFeature={style=Bold Italic}},
     Script         = Thai,
     Mapping        = tex-text
   ]
@@ -72,7 +75,8 @@
   \usepackage{luacolor}
   \usepackage[soul]{lua-ul}
 \else
-  \usepackage{soul}
+  \usepackage{ulem}
+  \normalem
 \fi
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
@@ -122,9 +126,9 @@ Datasets}\label{uxe20uxe32uxe29uxe32uxe2duxe07uxe01uxe24uxe29-general-deep-learn
 \end{enumerate}
 
 \begin{quote}
-ตำแหน่งทางวิชาการ ชื่อ-นามสกุล \ul{ผู้ช่วยศาสตราจารย์ ดร.กฤตคม ศรีจิรานนท์}
+ตำแหน่งทางวิชาการ ชื่อ-นามสกุล \uline{ผู้ช่วยศาสตราจารย์ ดร.กฤตคม ศรีจิรานนท์}
 
-สังกัด \ul{คณะวิทยาศาสตร์และเทคโนโลยี ศูนย์ลำปาง} สัดส่วนในการทำวิจัย ร้อยละ \ul{75}
+สังกัด \uline{คณะวิทยาศาสตร์และเทคโนโลยี ศูนย์ลำปาง} สัดส่วนในการทำวิจัย ร้อยละ \uline{75}
 \end{quote}
 
 \begin{enumerate}
@@ -134,9 +138,9 @@ Datasets}\label{uxe20uxe32uxe29uxe32uxe2duxe07uxe01uxe24uxe29-general-deep-learn
   \textbf{ผู้ร่วมวิจัย}
 \end{enumerate}
 
-ตำแหน่งทางวิชาการ ชื่อ-นามสกุล \ul{รองศาสตราจารย์ ดร.ธนาธร ทะนานทอง}
+ตำแหน่งทางวิชาการ ชื่อ-นามสกุล \uline{รองศาสตราจารย์ ดร.ธนาธร ทะนานทอง}
 
-สังกัด \ul{คณะวิทยาศาสตร์และเทคโนโลยี} สัดส่วนในการทำวิจัย ร้อยละ \ul{25}
+สังกัด \uline{คณะวิทยาศาสตร์และเทคโนโลยี} สัดส่วนในการทำวิจัย ร้อยละ \uline{25}
 
 \textbf{3. ที่ปรึกษาโครงการวิจัย} (ถ้ามี)
 
@@ -153,15 +157,15 @@ Datasets}\label{uxe20uxe32uxe29uxe32uxe2duxe07uxe01uxe24uxe29-general-deep-learn
   \textbf{ประเภทการวิจัย (เลือกข้อใดข้อหนึ่ง)}
 \end{enumerate}
 
-🔿 วิจัยพื้นฐาน
+$\square$ วิจัยพื้นฐาน
 
-🔿 วิจัยประยุกต์
+$\square$ วิจัยประยุกต์
 
-🔿 งานวิจัยเพื่อตอบปัญหาและพัฒนาชุมชน/สังคม
+$\square$ งานวิจัยเพื่อตอบปัญหาและพัฒนาชุมชน/สังคม
 
-🔿 งานวิจัยเสริมหลักสูตรเพื่อพัฒนาการเรียนรู้ หลักสูตร/รหัสวิชา
+$\square$ งานวิจัยเสริมหลักสูตรเพื่อพัฒนาการเรียนรู้ หลักสูตร/รหัสวิชา
 
-🔿 อื่นๆ โปรดระบุ
+$\square$ อื่นๆ โปรดระบุ
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -171,13 +175,13 @@ Datasets}\label{uxe20uxe32uxe29uxe32uxe2duxe07uxe01uxe24uxe29-general-deep-learn
 \end{enumerate}
 
 \begin{quote}
-🔿 \textbf{สาขาสังคมศาสตร์}
+$\square$ \textbf{สาขาสังคมศาสตร์}
 
-🔿 \textbf{สาขามนุษยศาสตร์}
+$\square$ \textbf{สาขามนุษยศาสตร์}
 
-🔿 \textbf{สาขาวิทยาศาสตร์และเทคโนโลยี}
+$\square$ \textbf{สาขาวิทยาศาสตร์และเทคโนโลยี}
 
-🔿 \textbf{สาขาวิทยาศาสตร์สุขภาพ}
+$\square$ \textbf{สาขาวิทยาศาสตร์สุขภาพ}
 \end{quote}
 
 \textbf{\hfill\break
@@ -217,7 +221,7 @@ Development Goals-SDGs) ใน 17 เป้าหมาย (Goals)}
 ส่งเสริมการพัฒนาอุตสาหกรรม\\
 ที่ครอบคลุมและยั่งยืน และส่งเสริมนวัตกรรม
 
-\textbf{🗹 เป้าหมายที่ 10} ลดความไม่เสมอภาคภายในประเทศและระหว่างประเทศ
+\textbf{$\boxtimes$ เป้าหมายที่ 10} ลดความไม่เสมอภาคภายในประเทศและระหว่างประเทศ
 
 \textbf{□ เป้าหมายที่ 11} ทำให้เมืองและการตั้งถิ่นฐานของมนุษย์มีความปลอดภัย ทั่วถึง
 พร้อมรับการเปลี่ยนแปลงและยั่งยืน
@@ -244,17 +248,17 @@ Development Goals-SDGs) ใน 17 เป้าหมาย (Goals)}
 * โดยนักวิจัยสามารถศึกษา ข้อมูลที่เกี่ยวกับ SDGs ศึกษาได้จาก
 \url{https://sdgs.tu.ac.th}
 
-\textbf{6. โปรดระบุความเกี่ยวข้องกับมาตรฐานการทำวิจัย} (ทำเครื่องหมาย ✔ ในช่อง 🔿
+\textbf{6. โปรดระบุความเกี่ยวข้องกับมาตรฐานการทำวิจัย} (ทำเครื่องหมาย $\checkmark$ ในช่อง $\square$
 พร้อมแนบเอกสาร)
 
 \begin{quote}
-\textbf{6.1} 🔿 \textbf{จริยธรรมการวิจัยในคน}
+\textbf{6.1} $\square$ \textbf{จริยธรรมการวิจัยในคน}
 
-\textbf{6.2 🔿 การใช้สัตว์ทดลอง}
+\textbf{6.2 $\square$ การใช้สัตว์ทดลอง}
 
-\textbf{6.3 🔿 การดำเนินการด้านความปลอดภัยทางชีวภาพ}
+\textbf{6.3 $\square$ การดำเนินการด้านความปลอดภัยทางชีวภาพ}
 
-\textbf{6.4 🔿 โครงการนี้ไม่เกี่ยวข้อง}
+\textbf{6.4 $\square$ โครงการนี้ไม่เกี่ยวข้อง}
 \end{quote}
 
 \textbf{หมายเหตุ} 1) หากระบุความเกี่ยวข้องตามข้อ 6.1 -- 6.3
@@ -709,9 +713,9 @@ average precision, precision, sensitivity, specificity, and accuracy.
 \textbf{14. ระยะเวลาการวิจัยทั้งโครงการ}
 (นับจากระยะเวลาที่เริ่มต้นสัญญารับทุนไปจนถึงบทความได้รับการตอบรับให้ตีพิมพ์ในวารสารแล้ว)
 
-ระยะเวลาโครงการ \ul{2} ปี \ul{0} เดือน
+ระยะเวลาโครงการ \uline{2} ปี \uline{0} เดือน
 
-วันที่เริ่มต้น \ul{5 มิถุนายน 2567} วันที่สิ้นสุด \ul{4 มิถุนายน 2569}
+วันที่เริ่มต้น \uline{5 มิถุนายน 2567} วันที่สิ้นสุด \uline{4 มิถุนายน 2569}
 
 \textbf{แผนการดำเนินงานวิจัย}
 
@@ -1016,11 +1020,11 @@ SCOPUS (Quartile 1 -- 3) & 1 & บทความ \\
 
 เลือกการตรวจสอบทรัพย์สินทางปัญหาหรือสิทธิบัตรที่เกี่ยวข้อง
 
-🔿 ไม่มีการตรวจสอบทรัพย์สินทางปัญญา และ/หรือ สิทธิบัตรที่เกี่ยวข้อง
+$\square$ ไม่มีการตรวจสอบทรัพย์สินทางปัญญา และ/หรือ สิทธิบัตรที่เกี่ยวข้อง
 
-🔿 ตรวจสอบทรัพย์สินทางปัญญาแล้ว ไม่มีทรัพย์สินทางปัญญา และ/หรือ สิทธิบัตรที่เกี่ยวข้อง
+$\square$ ตรวจสอบทรัพย์สินทางปัญญาแล้ว ไม่มีทรัพย์สินทางปัญญา และ/หรือ สิทธิบัตรที่เกี่ยวข้อง
 
-🔿 ตรวจสอบทรัพย์สินทางปัญญาแล้ว มีทรัพย์สินทางปัญญา และ/หรือ สิทธิบัตรที่เกี่ยวข้อง
+$\square$ ตรวจสอบทรัพย์สินทางปัญญาแล้ว มีทรัพย์สินทางปัญญา และ/หรือ สิทธิบัตรที่เกี่ยวข้อง
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -1242,15 +1246,15 @@ SCOPUS (Quartile 1 -- 3) & 1 & บทความ \\
 \textbf{23. โครงการดังกล่าวได้รับการสนับสนุนงบประมาณจากแหล่งทุนอื่น
 ทั้งภายในและภายนอกมหาวิทยาลัยธรรมศาสตร์หรือไม่}
 
-🔿 โครงการวิจัยนี้ไม่ได้รับการสนับสนุนจากแหล่งทุนอื่น
+$\square$ โครงการวิจัยนี้ไม่ได้รับการสนับสนุนจากแหล่งทุนอื่น
 
-🔿 โครงการวิจัยนี้อยู่ระหว่างเสนอเพื่อพิจารณารับการสนับสนุนจากแหล่งทุนอื่น ดังนี้
+$\square$ โครงการวิจัยนี้อยู่ระหว่างเสนอเพื่อพิจารณารับการสนับสนุนจากแหล่งทุนอื่น ดังนี้
 
 \begin{quote}
 (ระบุชื่อแหล่งทุนและงบประมาณที่ขอรับการสนับสนุน)
 \end{quote}
 
-🔿 โครงการวิจัยนี้ได้รับการสนับสนุนจากแหล่งทุนอื่นแล้วบางส่วน
+$\square$ โครงการวิจัยนี้ได้รับการสนับสนุนจากแหล่งทุนอื่นแล้วบางส่วน
 
 \begin{quote}
 (ระบุชื่อแหล่งทุนและจำนวนงบประมาณที่ได้รับการสนับสนุน)
@@ -1300,7 +1304,7 @@ SCOPUS (Quartile 1 -- 3) & 1 & บทความ \\
 
 วันที่.........เดือน........................พ.ศ...........
 
-\ul{\hfill\break
+\uline{\hfill\break
 \textbf{ส่วนที่ 2}} \textbf{: ประวัติคณะผู้วิจัย
 (หัวหน้าโครงการวิจัย/ผู้วิจัย/ที่ปรึกษาโครงการ)}
 
@@ -1313,28 +1317,28 @@ SCOPUS (Quartile 1 -- 3) & 1 & บทความ \\
 \end{enumerate}
 
 \begin{quote}
-(ภาษาไทย) \ul{ผู้ช่วยศาสตราจารย์ ดร.กฤตคม ศรีจิรานนท์}
+(ภาษาไทย) \uline{ผู้ช่วยศาสตราจารย์ ดร.กฤตคม ศรีจิรานนท์}
 
-(ภาษาอังกฤษ) \ul{Asst. Prof. Dr.Krittakom Srijiranon}
+(ภาษาอังกฤษ) \uline{Asst. Prof. Dr.Krittakom Srijiranon}
 \end{quote}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{1}
 \item
-  \textbf{หมายเลขบัตรประชาชน} \ul{1529900526868}
+  \textbf{หมายเลขบัตรประชาชน} \uline{1529900526868}
 \item
-  \textbf{รับราชการ/พนักงานมหาวิทยาลัย เมื่อ} \ul{10 ตุลาคม 2560}
+  \textbf{รับราชการ/พนักงานมหาวิทยาลัย เมื่อ} \uline{10 ตุลาคม 2560}
 \item
   \textbf{สถานที่ติดต่อ}
 \end{enumerate}
 
-สาขาวิชา \ul{วิทยาการคอมพิวเตอร์} คณะ \ul{วิทยาศาสตร์และเทคโนโลยี (ศูนย์ลำปาง)}
+สาขาวิชา \uline{วิทยาการคอมพิวเตอร์} คณะ \uline{วิทยาศาสตร์และเทคโนโลยี (ศูนย์ลำปาง)}
 
-โทรศัพท์ (ที่ทำงาน) \ul{82-5625} (ที่บ้าน) \ul{ไม่มี}
+โทรศัพท์ (ที่ทำงาน) \uline{82-5625} (ที่บ้าน) \uline{ไม่มี}
 
-โทรศัพท์มือถือ \ul{081-8859019} E-mail address
-\ul{krittakom\_s@sci.tu.ac.th}
+โทรศัพท์มือถือ \uline{081-8859019} E-mail address
+\uline{krittakom\_s@sci.tu.ac.th}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1386,7 +1390,7 @@ SCOPUS (Quartile 1 -- 3) & 1 & บทความ \\
 \end{enumerate}
 
 \begin{quote}
-\ul{Data Mining, Neuro-fuzzy System, Speech Recognition, Classification
+\uline{Data Mining, Neuro-fuzzy System, Speech Recognition, Classification
 / Prediction Model}
 \end{quote}
 
@@ -1424,7 +1428,7 @@ https://doi.org/10.1002/widm.1423
   \textbf{การได้รับรางวัลทางด้านการวิจัย}
 \end{enumerate}
 
-\ul{ไม่มี}
+\uline{ไม่มี}
 
 \textbf{\hfill\break
 }\textbf{ผู้ร่วมวิจัย}
@@ -1436,27 +1440,27 @@ https://doi.org/10.1002/widm.1423
 \end{enumerate}
 
 \begin{quote}
-(ภาษาไทย) \ul{รองศาสตราจารย์ ดร.ธนาธร ทะนานทอง}
+(ภาษาไทย) \uline{รองศาสตราจารย์ ดร.ธนาธร ทะนานทอง}
 
-(ภาษาอังกฤษ) \ul{Assoc. Prof. Dr.Tanatorn Tanantong}
+(ภาษาอังกฤษ) \uline{Assoc. Prof. Dr.Tanatorn Tanantong}
 \end{quote}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{1}
 \item
-  \textbf{หมายเลขบัตรประชาชน} \ul{1200100008395}
+  \textbf{หมายเลขบัตรประชาชน} \uline{1200100008395}
 \item
-  \textbf{รับราชการ/พนักงานมหาวิทยาลัย เมื่อ} \ul{9 สิงหาคม 2560}
+  \textbf{รับราชการ/พนักงานมหาวิทยาลัย เมื่อ} \uline{9 สิงหาคม 2560}
 \item
   \textbf{สถานที่ติดต่อ}
 \end{enumerate}
 
-สาขาวิชา \ul{วิทยาการคอมพิวเตอร์} คณะ \ul{วิทยาศาสตร์และเทคโนโลยี}
+สาขาวิชา \uline{วิทยาการคอมพิวเตอร์} คณะ \uline{วิทยาศาสตร์และเทคโนโลยี}
 
-โทรศัพท์ (ที่ทำงาน) \ul{02-564-4444 ต่อ 2157 ต่อ 207} (ที่บ้าน) \ul{ไม่มี}
+โทรศัพท์ (ที่ทำงาน) \uline{02-564-4444 ต่อ 2157 ต่อ 207} (ที่บ้าน) \uline{ไม่มี}
 
-โทรศัพท์มือถือ \ul{097-429-1951} E-mail address \ul{tanatorn@tu.ac.th}
+โทรศัพท์มือถือ \uline{097-429-1951} E-mail address \uline{tanatorn@tu.ac.th}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1508,7 +1512,7 @@ https://doi.org/10.1002/widm.1423
 \end{enumerate}
 
 \begin{quote}
-\ul{Artificial Intelligence, Data Mining \& Machine Learning, Formal
+\uline{Artificial Intelligence, Data Mining \& Machine Learning, Formal
 Onlogies and Semantic Web Technology, Knowledge-based Systems, Body
 Sensor Networks, Medical Informatics \& Hospital Information Systems,
 Internet of Things (IoTs)}
@@ -1562,7 +1566,7 @@ discover demand and supply patterns based on Thai social media data.
   \textbf{การได้รับรางวัลทางด้านการวิจัย}
 \end{enumerate}
 
-\ul{รางวัลสภาวิจัยแห่งชาติ: รางวัลวิทยานิพนธ์ระดับดี ประจำปีงบประมาณ 2562
+\uline{รางวัลสภาวิจัยแห่งชาติ: รางวัลวิทยานิพนธ์ระดับดี ประจำปีงบประมาณ 2562
 โดยสำนักงานคณะกรรมการวิจัยแห่งชาติ (วช.)}
 
 \end{document}
