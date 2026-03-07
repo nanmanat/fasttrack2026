@@ -7,40 +7,24 @@
 \usepackage{amsmath,amssymb}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
+% Thai support: requires XeLaTeX or LuaLaTeX
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
+  \usepackage{textcomp}
+\else
   \usepackage{fontspec}
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \usepackage{polyglossia}
+  \setmainlanguage{thai}
+  \setotherlanguage{english}
+  \setmainfont{TH Sarabun New}[
+    BoldFont       = {TH Sarabun New Bold},
+    ItalicFont     = {TH Sarabun New Italic},
+    BoldItalicFont = {TH Sarabun New BoldItalic},
+    Script         = Thai,
+    Mapping        = tex-text
+  ]
 \fi
-% Thai font support (XeLaTeX/LuaLaTeX)
-\ifXeTeX
-  \usepackage{xltxtra}
-  \usepackage{polyglossia}
-  \setmainlanguage{thai}
-  \setotherlanguage{english}
-  \setmainfont{TH Sarabun New}[
-    BoldFont       = {TH Sarabun New Bold},
-    ItalicFont     = {TH Sarabun New Italic},
-    BoldItalicFont = {TH Sarabun New BoldItalic},
-    Script         = Thai
-  ]
-\else\ifLuaTeX
-  \usepackage{fontspec}
-  \usepackage{polyglossia}
-  \setmainlanguage{thai}
-  \setotherlanguage{english}
-  \setmainfont{TH Sarabun New}[
-    BoldFont       = {TH Sarabun New Bold},
-    ItalicFont     = {TH Sarabun New Italic},
-    BoldItalicFont = {TH Sarabun New BoldItalic},
-    Script         = Thai
-  ]
-\fi\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
