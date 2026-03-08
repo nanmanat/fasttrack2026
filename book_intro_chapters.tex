@@ -1,0 +1,161 @@
+\documentclass[12pt, a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage{lmodern}
+
+\geometry{margin=2.5cm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\title{\textbf{Book Introduction Chapters}\\[0.5em]
+\large Classification Model Applications}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+% ─────────────────────────────────────────────
+\chapter{Introduction to Classification Model Applications}
+% ─────────────────────────────────────────────
+
+\section{What is Classification?}
+Classification is a supervised learning task where a model learns to assign an input to one of several predefined categories based on labeled training data.
+
+\section{Types of Classification}
+\begin{itemize}
+    \item \textbf{Binary Classification} --- the output has exactly two possible classes, e.g., spam vs.\ not spam, income $\leq$50K vs.\ $>$50K.
+    \item \textbf{Multi-class Classification} --- the output can belong to three or more classes, e.g., cry sound types, kale disease categories, nursery admission levels.
+\end{itemize}
+
+\section{Overview of Real-World Classification Applications}
+\begin{itemize}
+    \item \textbf{Tabular Data} --- structured row-and-column data such as census records for income prediction or family profiles for nursery admission decisions.
+    \item \textbf{Audio/Signal Data} --- raw audio files converted into numerical features (e.g., Mel Spectrogram) for classifying infant cry sounds into emotional or physiological states.
+    \item \textbf{Image/Visual Data} --- photographs of plant leaves processed through a deep learning model to detect and classify diseases such as aphid infestation on kale.
+\end{itemize}
+
+\section{The Classification Model Development Lifecycle}
+A repeatable workflow that begins with defining the problem and collecting data, proceeds through preprocessing and model training, and concludes with evaluation and interpretation of results.
+
+% ─────────────────────────────────────────────
+\chapter{Data Preprocessing}
+% ─────────────────────────────────────────────
+
+\section{Understanding Your Dataset}
+\begin{itemize}
+    \item \textbf{Introduction} --- Before any modeling, it is essential to explore the dataset: its size, structure, and the meaning of each column.
+    \item \textbf{Data types: numerical vs.\ categorical} --- Numerical features hold continuous or integer values; categorical features hold discrete labels. Each type requires different preprocessing steps.
+    \item \textbf{Visualizing distributions} --- Histograms reveal the spread of numerical features; count plots show the frequency of each category, helping identify skewed or rare values.
+    \item \textbf{Imbalance problem} --- When one class has far more samples than others, a model can appear accurate while simply ignoring minority classes.
+\end{itemize}
+
+\section{Handling Missing Values}
+\begin{itemize}
+    \item \textbf{Detecting missing values} --- Missing entries can be explicit (NaN) or hidden as empty strings or spaces. Identifying them early prevents silent errors downstream.
+    \item \textbf{Drop strategy vs.\ imputation} --- Rows with missing values can be removed entirely, or missing entries can be filled using the most frequent value for categorical columns, and the mean or median for numerical ones.
+\end{itemize}
+
+\section{Data Cleaning}
+\begin{itemize}
+    \item \textbf{Removing duplicate records} --- Duplicate rows can inflate model performance metrics and introduce bias, so they are identified and dropped before training.
+    \item \textbf{Filtering invalid or irrelevant class samples} --- Certain class labels may be too rare or ambiguous to be useful; removing them produces a cleaner and more reliable target variable.
+\end{itemize}
+
+\section{Feature and Target Separation}
+The dataset is split into features, which serve as model inputs, and the target, which is the class label the model learns to predict.
+
+\section{Encoding Categorical Features}
+\begin{itemize}
+    \item \textbf{Label Encoding} --- Each unique category is mapped to an integer. Suitable for ordinal features or tree-based models that do not assume numerical order.
+    \item \textbf{One-Hot Encoding} --- Each category becomes a separate binary column. Suitable for nominal features where no ordering exists.
+    \item \textbf{Encoding the target variable} --- The target class labels are also converted to integers using Label Encoding so the model can process them numerically.
+\end{itemize}
+
+\section{Feature Scaling and Normalization}
+\begin{itemize}
+    \item \textbf{Why normalization matters} --- Features with large value ranges can dominate distance-based or gradient-based models, making scaling essential for fair comparison across features.
+    \item \textbf{Min-Max Normalization} --- Rescales all feature values to the range $[0, 1]$ by subtracting the minimum and dividing by the value range. Best used when the data has known bounds and no significant outliers.
+    \item \textbf{Z-Score Normalization (Standardization)} --- Transforms features to have a mean of 0 and a standard deviation of 1 by subtracting the mean and dividing by the standard deviation. More robust than Min-Max when the data contains outliers or follows a roughly normal distribution.
+\end{itemize}
+
+\section{Handling Class Imbalance}
+\begin{itemize}
+    \item \textbf{Understanding imbalanced datasets} --- When class distribution is uneven, models tend to be biased toward the majority class, resulting in poor recall on minority classes.
+    \item \textbf{Random Oversampling} --- Duplicates randomly selected samples from minority classes to increase their representation. Simple to apply but risks overfitting since no new information is added.
+    \item \textbf{SMOTE (Synthetic Minority Oversampling Technique)} --- Generates synthetic samples for minority classes by interpolating between existing neighboring data points, producing more diverse training examples than simple duplication.
+    \item \textbf{Random Undersampling} --- Randomly removes samples from the majority class to balance the distribution. Reduces training time but discards potentially useful data.
+    \item \textbf{Class Weight Adjustment} --- Instead of resampling, assigns a higher penalty to misclassifying minority classes during training. Supported natively by many classifiers via the \texttt{class\_weight} parameter, making it a low-cost alternative.
+    \item \textbf{Applying class imbalance techniques correctly} --- Any resampling technique must be applied only to the training set after the train-test split. Applying it before splitting causes data leakage, where synthetic samples in the test set artificially inflate evaluation results.
+\end{itemize}
+
+% ─────────────────────────────────────────────
+\chapter{Classification Models and Evaluation}
+% ─────────────────────────────────────────────
+
+\section{Overview of Common Classification Algorithms}
+\begin{itemize}
+    \item \textbf{K-Nearest Neighbors (KNN)} --- Classifies a sample by majority vote among its $k$ nearest neighbors in feature space. Key parameters include the number of neighbors ($k$), distance metric, and weighting scheme.
+    \item \textbf{Support Vector Machine (SVM)} --- Finds the optimal hyperplane that maximizes the margin between classes. Key parameters include the regularization constant ($C$), kernel type, and kernel coefficient (gamma).
+    \item \textbf{Decision Tree} --- Recursively splits data based on feature thresholds to form a tree of decisions. Key parameters include maximum depth, minimum samples per split, and splitting criterion (Gini or Entropy).
+    \item \textbf{Neural Network (MLP)} --- A multi-layer perceptron that learns non-linear decision boundaries through forward propagation and backpropagation. Key parameters include hidden layer sizes, activation function, and learning rate.
+    \item \textbf{Random Forest} --- An ensemble of decision trees trained on random subsets of data and features, with predictions made by majority vote. Reduces overfitting compared to a single tree. Key parameters include number of trees (\texttt{n\_estimators}), maximum depth, and minimum samples per split.
+    \item \textbf{XGBoost} --- A gradient boosting algorithm that sequentially trains trees to correct the errors of previous ones. Known for strong performance on tabular data with parameters for learning rate, tree depth, and number of estimators.
+    \item \textbf{Convolutional Neural Network (CNN)} --- A deep learning model designed for grid-like data such as images, using convolutional layers to automatically learn spatial features like edges, textures, and shapes. Key parameters include the number and size of convolutional filters, pooling strategy, number of layers, and learning rate. A pretrained CNN (e.g., Inception V3) can be fine-tuned for a new task via transfer learning, reducing the need for large labeled datasets.
+\end{itemize}
+
+\section{Model Training Fundamentals}
+\begin{itemize}
+    \item \textbf{Train-Test Split} --- Data is divided into a training set (typically 70\%) used to fit the model and a test set (30\%) used to estimate real-world performance on unseen data.
+    \item \textbf{Cross-Validation (Stratified K-Fold)} --- The data is split into $k$ folds; the model is trained on $k-1$ folds and evaluated on the remaining one, repeated $k$ times. Stratified splitting ensures each fold preserves the original class distribution.
+    \item \textbf{Avoiding data leakage} --- Preprocessing steps such as scaling, encoding, and oversampling must be fitted only on training folds and applied to test folds to ensure unbiased evaluation.
+\end{itemize}
+
+\section{Hyperparameter Tuning}
+\begin{itemize}
+    \item \textbf{Grid Search (GridSearchCV)} --- Exhaustively evaluates all combinations of specified hyperparameter values using cross-validation, selecting the combination that yields the best scoring metric.
+\end{itemize}
+
+\section{Model Evaluation Metrics}
+\begin{itemize}
+    \item \textbf{Accuracy, Precision, Recall, F1-Score} --- Accuracy measures overall correctness; Precision measures how many predicted positives are truly positive; Recall measures how many actual positives were correctly identified; F1-Score is the harmonic mean of Precision and Recall, balancing both.
+    \item \textbf{Macro vs.\ Weighted Averaging} --- Macro averaging treats all classes equally regardless of size; weighted averaging accounts for class frequency, giving more weight to larger classes.
+    \item \textbf{Loss Curves} --- Plots of training loss over iterations or epochs that reveal whether the model is converging, overfitting, or underfitting.
+    \item \textbf{Confusion Matrix} --- A grid showing the counts of true positives, true negatives, false positives, and false negatives for each class, providing a detailed picture of where the model succeeds and fails.
+\end{itemize}
+
+% ─────────────────────────────────────────────
+\chapter{Advanced Data Preprocessing (Feature Selection)}
+% ─────────────────────────────────────────────
+
+\section{What is Feature Selection?}
+Feature selection is the process of creating, transforming, or selecting input variables to improve model learning. Good features can have a greater impact on performance than algorithm choice alone.
+
+\section{Feature Extraction for Non-Tabular Data}
+\begin{itemize}
+    \item \textbf{Audio: Mel Spectrogram extraction with Librosa} --- Raw audio waveforms are converted into 2D Mel Spectrogram representations that capture frequency content over time, which are then flattened into feature vectors.
+    \item \textbf{Images: Using pretrained CNN features via Transfer Learning (Inception V3)} --- A convolutional neural network pretrained on ImageNet is fine-tuned on a new image classification task, reusing learned visual representations to reduce training data requirements.
+    \item \textbf{Flattening and serializing feature arrays} --- 2D feature arrays (e.g., spectrograms) are flattened into 1D vectors so they can be stored in CSV format and fed into standard classifiers.
+\end{itemize}
+
+\section{Feature Selection Methods}
+\begin{itemize}
+    \item \textbf{Permutation Importance} --- Measures how much model performance drops when the values of a single feature are randomly shuffled; features with high importance are retained.
+    \item \textbf{Forward Feature Selection} --- Starts with no features and iteratively adds the one that most improves model performance until no further gain is achieved.
+    \item \textbf{Backward Feature Selection} --- Starts with all features and iteratively removes the least useful one until performance begins to decline.
+\end{itemize}
+
+\section{Comparing Feature Selection Strategies}
+Different selection methods can yield different feature subsets and varying model performance. Comparing them systematically using the same evaluation metric helps identify the most informative subset.
+
+\end{document}
