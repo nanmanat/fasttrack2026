@@ -46,15 +46,15 @@ A repeatable workflow that begins with defining the problem and collecting data,
 \subsection*{2.1 Understanding Your Dataset}
 \begin{itemize}
     \item \textbf{Introduction} --- Before any modeling, it is essential to explore the dataset: its size, structure, and the meaning of each column.
-    \item \textbf{Data types: numerical vs.\ categorical} --- Numerical features hold continuous or integer values; categorical features hold discrete labels. Each type requires different preprocessing steps.
-    \item \textbf{Visualizing distributions} --- Histograms reveal the spread of numerical features; count plots show the frequency of each category, helping identify skewed or rare values.
+    \item \textbf{Data types: numerical vs.\ categorical} --- Numerical features hold continuous or integer values; categorical features hold discrete labels and are further divided into \textbf{ordinal} features (categories with a meaningful order, e.g., low/medium/high) and \textbf{nominal} features (categories with no inherent order, e.g., colors or city names). Each type requires different preprocessing steps.
+    \item \textbf{Visualizing distributions} --- Histograms reveal the spread of numerical features; bar charts show the frequency of each category across features, helping identify skewed or rare values.
     \item \textbf{Imbalance problem} --- When one class has far more samples than others, a model can appear accurate while simply ignoring minority classes.
 \end{itemize}
 
 \subsection*{2.2 Handling Missing Values}
 \begin{itemize}
     \item \textbf{Detecting missing values} --- Missing entries can be explicit (NaN) or hidden as empty strings or spaces. Identifying them early prevents silent errors downstream.
-    \item \textbf{Drop strategy vs.\ imputation} --- Rows with missing values can be removed entirely, or missing entries can be filled using the most frequent value for categorical columns, and the mean or median for numerical ones.
+    \item \textbf{Drop strategy vs.\ imputation} --- Rows with missing values can be removed entirely, or missing entries can be filled using the mode (most frequent value) for categorical columns, and the mean or median for numerical ones.
 \end{itemize}
 
 \subsection*{2.3 Data Cleaning}
@@ -70,7 +70,7 @@ The dataset is split into features, which serve as model inputs, and the target,
 \begin{itemize}
     \item \textbf{Label Encoding} --- Each unique category is mapped to an integer. Suitable for ordinal features or tree-based models that do not assume numerical order.
     \item \textbf{One-Hot Encoding} --- Each category becomes a separate binary column. Suitable for nominal features where no ordering exists.
-    \item \textbf{Encoding the target variable} --- The target class labels are also converted to integers using Label Encoding so the model can process them numerically.
+    \item \textbf{Encoding the target variable} --- The target class labels are also converted to integers using Label Encoding so the model can process them numerically. One-Hot Encoding is not used for the target because it would produce multiple binary columns instead of a single integer label, which is incompatible with how classifiers expect the target variable to be formatted.
 \end{itemize}
 
 \subsection*{2.6 Feature Scaling and Normalization}
@@ -92,6 +92,8 @@ The dataset is split into features, which serve as model inputs, and the target,
 
 \section*{Chapter 3: Classification Models and Evaluation}
 
+This chapter introduces the classification algorithms used throughout the book and explains how to train and evaluate them. Each algorithm exposes a set of hyperparameters --- such as the number of neighbors in KNN, the regularization constant in SVM, tree depth in Decision Tree and Random Forest, or the learning rate and hidden layer sizes in Neural Networks --- that control its behaviour and performance. Understanding these parameters is the foundation for the hyperparameter fine-tuning covered later in Section~3.3.
+
 \subsection*{3.1 Overview of Common Classification Algorithms}
 \begin{itemize}
     \item \textbf{K-Nearest Neighbors (KNN)} --- Classifies a sample by majority vote among its $k$ nearest neighbors in feature space. Key parameters include the number of neighbors ($k$), distance metric, and weighting scheme.
@@ -106,7 +108,7 @@ The dataset is split into features, which serve as model inputs, and the target,
 \subsection*{3.2 Model Training Fundamentals}
 \begin{itemize}
     \item \textbf{Train-Test Split} --- Data is divided into a training set (typically 70\%) used to fit the model and a test set (30\%) used to estimate real-world performance on unseen data.
-    \item \textbf{Cross-Validation (Stratified K-Fold)} --- The data is split into $k$ folds; the model is trained on $k-1$ folds and evaluated on the remaining one, repeated $k$ times. Stratified splitting ensures each fold preserves the original class distribution.
+    \item \textbf{Cross-Validation (K-Fold)} --- The data is split into $k$ folds; the model is trained on $k-1$ folds and evaluated on the remaining one, repeated $k$ times. \textbf{Standard (non-stratified) K-Fold} assigns samples to folds randomly without regard to class distribution, which can result in imbalanced folds on skewed datasets. \textbf{Stratified K-Fold} addresses this by ensuring each fold preserves the original class distribution, making it the preferred choice for classification tasks.
     \item \textbf{Avoiding data leakage} --- Preprocessing steps such as scaling, encoding, and oversampling must be fitted only on training folds and applied to test folds to ensure unbiased evaluation.
 \end{itemize}
 
@@ -119,7 +121,7 @@ The dataset is split into features, which serve as model inputs, and the target,
 \begin{itemize}
     \item \textbf{Accuracy, Precision, Recall, F1-Score} --- Accuracy measures overall correctness; Precision measures how many predicted positives are truly positive; Recall measures how many actual positives were correctly identified; F1-Score is the harmonic mean of Precision and Recall, balancing both.
     \item \textbf{Macro vs.\ Weighted Averaging} --- Macro averaging treats all classes equally regardless of size; weighted averaging accounts for class frequency, giving more weight to larger classes.
-    \item \textbf{Loss Curves} --- Plots of training loss over iterations or epochs that reveal whether the model is converging, overfitting, or underfitting.
+    \item \textbf{Loss Curves} --- Plots of training loss over iterations or epochs that reveal whether the model is converging, overfitting, or underfitting. \textit{Note: Loss curves are applicable only to neural network models (e.g., MLP, CNN) that optimize a differentiable loss function through gradient descent. Tree-based models such as Decision Tree, Random Forest, and XGBoost do not produce loss curves.}
     \item \textbf{Confusion Matrix} --- A grid showing the counts of true positives, true negatives, false positives, and false negatives for each class, providing a detailed picture of where the model succeeds and fails.
 \end{itemize}
 
